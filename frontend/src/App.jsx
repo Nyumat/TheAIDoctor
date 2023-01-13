@@ -1,12 +1,14 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import "./index.css";
 
 function App() {
   return (
-    <div className="bg-pallete-purple-200 flex flex-row justify-center align-items-center">
-      <div className="text-3xl font-bold underline">
-        <h1>Hello World</h1>
+    <div className=" title flex flex-row justify-center align-items-center">
+      <div className="text text-9xl flex-column text-left font-bold">
+        <p>SMART </p>
+        <p>HEALTHCARE</p> 
       </div>
     </div>
   );
