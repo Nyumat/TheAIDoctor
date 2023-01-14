@@ -5,9 +5,15 @@ import dotenv from "dotenv";
 import axios from "axios";
 import tracker from "./middleware/tracker.js";
 import setHeaders from "./middleware/setHeaders.js";
+import os from "os";
+import { OpenAIApi, Configuration } from "openai";
 
 dotenv.config();
 const app = express();
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
 
 // Middlewares
 app.use(cors());
@@ -27,6 +33,30 @@ app.get("/api/user", (req, res) => {
     name: "Tom",
   });
 });
+
+
+app.get("/api/ai", async (req, res) => {
+  let query = req.query.query;
+
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `Human: ${query}`,
+    temperature: 0.9,
+    max_tokens: 150,
+    top_p: 1,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.6,
+    stop: [" Human:", " AI:"],
+  });
+
+  // console.log(response.data.choices[0].text);
+
+  res.status(200).json({
+    message: "AI fetched successfully",
+    res: response.data.choices[0].text,
+  });
+})
+
 
 app.listen(process.env.PORT, () => {
   console.log(`\n\n Server running on port ${process.env.PORT} \n\n`);
