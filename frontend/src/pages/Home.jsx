@@ -15,11 +15,12 @@ const Home = () => {
   };
 
   const fetchChatGPTResponse = async (query) => {
-    const response = await axios.get(`${requests.fetchChatGPT}?query=${query}}`);
+    const response = await axios.get(
+      `${requests.fetchChatGPT}?query=${query}}`
+    );
     const data = await response.data;
     console.log(data);
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
