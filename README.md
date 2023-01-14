@@ -9,3 +9,4 @@
 - [ ] Typing animations with React Type.
 - [ ] Make CSS less hacky (no absolute positioning).
 - [ ] Work on overflow for the chat window (old messages disappear upwards)
+- [ ] Chat input box should be fixed to bottom (not move down as new messages are entered)
