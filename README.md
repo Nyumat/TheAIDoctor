@@ -7,4 +7,4 @@
 - [X] User should not be able to resize or edit text input window.
 - [X] Make sure that the response we get from the AI Doctor is displayed in the chat box.
 - [X] Typing animations with React Type.
-= [X] Make CSS less hacky (no absolute positioning).
+- [X] Make CSS less hacky (no absolute positioning).
