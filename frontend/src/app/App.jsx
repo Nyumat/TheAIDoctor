@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 function App() {
   const queryClient = new QueryClient();
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-pallete-purple-200">
+    <div className="flex flex-col bg-pallete-purple-300 h-screen w-screen items-center justify-center">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
