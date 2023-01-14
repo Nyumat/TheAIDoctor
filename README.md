@@ -8,3 +8,4 @@
 - [ ] Make sure that the response we get from the AI Doctor is displayed in the chat box.
 - [ ] Typing animations with React Type.
 - [ ] Make CSS less hacky (no absolute positioning).
+- [ ] Work on overflow for the chat window (old messages disappear upwards)
