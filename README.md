@@ -11,4 +11,4 @@
 - [ ] Work on overflow for the chat window (old messages disappear upwards)
 - [ ] Chat input box should be fixed to bottom (not move down as new messages are entered)
 - [ ] Text input and chat messages cannot collide
-- [ ] Replace firebase api keys with .env files
+- [ ] Replace firebase api keys with .env files (intro and navbar)
