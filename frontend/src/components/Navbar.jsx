@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LogoutIcon from "./LogoutIcon";
 import SettingsIcon from "./SettingsIcon";
+import ChatIcon from "./ChatIcon";
 
 firebase.initializeApp({
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -56,6 +57,11 @@ const Navbar = () => {
             <div className="absolute right-0 mr-36 translate-y-[-43px]">
               <Link to="/settings" className="text-white text-xl font-bold">
                 <SettingsIcon className="cursor-pointer scale-150" />
+              </Link>
+            </div>
+            <div className="absolute right-16 mr-36 translate-y-[-43px] translate-x-[-5px]">
+              <Link to="/home" className="text-white text-xl font-bold">
+                <ChatIcon className="cursor-pointer scale-150" />
               </Link>
             </div>
           </div>
