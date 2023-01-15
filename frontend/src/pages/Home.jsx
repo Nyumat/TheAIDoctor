@@ -66,7 +66,7 @@ const Home = ({ userPhotoUrl }) => {
     if (query === "") return;
     // const response = await fetchChatGPTResponse(query);
     const response =
-      "Hello, how are you? I'm fine, thank you. The weather today is cloud.";
+      "I'm fine, thank you. I'd like to tell you that today, the weather is cloudy.";
     setMessages([...old_messages, { id: i, text: response, agent: "bot" }]);
     setI(i + 1);
   };
@@ -106,9 +106,14 @@ const Home = ({ userPhotoUrl }) => {
           id="chat-window"
           className="flex flex-col items-center h-[30rem] justify-center gap-8 py-16 bg-pallete-purple-100 w-[64rem] rounded-2xl scrollbar-hide overflow-scroll"
         >
-          <h1 className="text-pallete-purple-500 text-2xl mb-64 relative">
-            Welcome to AI Doctor Chat{" "}
-          </h1>
+          <div className="flex flex-col items-center">
+            <h1 className="text-pallete-purple-500 text-2xl relative">
+              Welcome to AI Doctor Chat
+            </h1>
+            <h1 className="text-pallete-purple-500 text-lg mb-64 relative font-bold">
+              Start your conversation with the doctor to get your health advice.
+            </h1>
+          </div>
           <div className="w-full px-8" ref={parent}>
             {messages.map((message, index) => (
               <div className="flex flex-col pt-6" key={index}>
