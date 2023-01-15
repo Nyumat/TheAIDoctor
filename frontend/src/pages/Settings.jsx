@@ -36,10 +36,13 @@ const addTags = (event) => {
 const Settings = () => {
   return (
     <>
-      <p className="flex items-center justify-center text-pallete-purple-900">
-        To help the AI Doctor answer your questions with a better percision
-        please let us know of any diseases you have at a time:{" "}
-      </p>
+      
+      <div className="  mx-10 px-10">
+        <h1 className="flex items-center text-2xl justify-center  text-center text-white">
+          To help the AI Doctor answer your questions with a better precision,
+          please let us know of any diseases you have at a time:{" "}
+        </h1>
+      </div>
       <br></br>
       <Layout>
         <CreatableSelect
@@ -51,9 +54,12 @@ const Settings = () => {
           placeholder="Press enter to add a disease"
           onKeyUp={(event) => addTags(event)}
           size="10rm"
+          
         />
       </Layout>
-    </>
+      
+      
+     </>
   );
 };
 

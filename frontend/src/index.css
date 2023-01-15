@@ -21,6 +21,10 @@ html {
     margin-right: 365px;
 }
 
+.text {
+    background-color: white;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
