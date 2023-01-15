@@ -141,7 +141,7 @@ const Home = () => {
 
                 <SendIcon
                   type="submit"
-                  className="cursor-pointer mt-5  translate-x-10"
+                  className="cursor-pointer mt-5"
                   onClick={handleSubmit}
                 ></SendIcon>
                 {/*
