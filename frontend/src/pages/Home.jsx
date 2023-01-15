@@ -125,7 +125,7 @@ const Home = ({ userPhotoUrl }) => {
                           <img src={userPhotoUrl} />
                         </div>
                       </div>
-                      <div className="chat-bubble bg-pallete-purple-300 text-gray-900 whitespace-normal break-words">
+                      <div className="chat-bubble bg-pallete-purple-300 text-gray-900 whitespace-normal break-normal">
                         {message.text}
                       </div>
                     </div>
