@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
+// I put the firebase initialize stuff here
 
 function SignOut() {
   const auth = firebase.auth();

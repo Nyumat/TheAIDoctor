@@ -7,6 +7,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import ScrollToBottom from "react-scroll-to-bottom";
+import { TypeAnimation } from 'react-type-animation';
 
 const STATIC_MESSAGES = [
   { id: 1, text: "Hello, how are you?", agent: "user" },
@@ -14,6 +16,8 @@ const STATIC_MESSAGES = [
   { id: 3, text: "I am fine too, thanks for asking.", agent: "user" },
   { id: 4, text: "You are welcome." },
 ];
+
+// I put the firebase initialize stuff here
 
 const auth = firebase.auth();
 
@@ -41,6 +45,7 @@ const Home = () => {
     setMessages([...messages, { id: 5, text: query, agent: "user" }]);
 
     setQuery("");
+    console.log(query);
   };
 
   const fetchChatGPTResponse = async (query) => {
@@ -70,42 +75,60 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center justify-center mt-16 h-[40rem] gap-8 py-16 bg-gray-600 w-[64rem] overflow-scroll">
-          {messages.map((message, index) => (
-            <div>
-              <div className="flex flex-row gap-4" key={index}>
-                {message.agent === "user" ? (
-                  <div className="flex flex-row gap-4 bg-green-700">
-                    {message.text}
-                  </div>
-                ) : (
-                  <div className="flex flex-row gap-4 bg-blue-700">
-                    {message.text}
-                  </div>
-                )}
+        <ScrollToBottom>
+          <div
+            id="chat-window"
+            className="flex flex-col items-center justify-center h-full gap-8 py-16 bg-gray-600 w-[64rem] rounded-2xl"
+          >
+            <div></div>
+            {messages.map((message, index) => (
+              <div>
+                <div className="flex flex-row w-256" key={index}>
+                  {message.agent === "user" ? (
+                    <div className="chat chat-end">
+                      <div className="chat-bubble chat-bubble-info">
+                        {message.text}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="chat chat-start">
+                      <div className="chat-bubble chat-bubble-primary">
+                      <TypeAnimation
+
+                      sequence =  {[message.text]}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-          {/* This cannot collide. */}
-          <div className="translate-y-48 pt-32 fixed">
-            <div className="flex flex-row gap-4 w-full">
-              <div className="flex flex-row gap-4">
-                <textarea
-                  className="textarea textarea-primary"
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Type Your Message Here"
-                ></textarea>
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  className="btn btn-primary bg-pallete-purple-500"
-                >
-                  Send
-                </button>
+            ))}
+            {/* This cannot collide. */}
+            <div className="">
+              <div className="absolute bottom-0">
+                <div className="flex flex-row gap-4 w-full">
+                  <div className="flex flex-row gap-4">
+                    <textarea
+                      className="textarea textarea-primary resize-none"
+                      // value = {(e) => setQuery(e.target.value)}
+                      onChange={(e) => setQuery(e.target.value)}
+                      onKeyDown={handleSubmitKeyboard}
+                      value={query}
+                      placeholder="Type Your Message Here"
+                    ></textarea>
+                    <button
+                      type="submit"
+                      onClick={handleSubmit}
+                      className="btn btn-primary bg-pallete-purple-500"
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ScrollToBottom>
       </Layout>
     </>
   );
