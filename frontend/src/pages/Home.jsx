@@ -8,7 +8,6 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { TypeAnimation } from "react-type-animation";
-import SendIcon from "../components/SendIcon";
 
 const STATIC_MESSAGES = [{ id: 1, text: "Hello, how are you?", agent: "bot" }];
 
@@ -128,20 +127,13 @@ const Home = () => {
             <div className="flex flex-row gap-4 w-full">
               <div className="flex flex-row gap-4">
                 <textarea
-                  className="textarea textarea-primary resize-none w-[65rem] h-[5rem] translate-x-10"
+                  className="textarea textarea-primary resize-none w-[65rem] h-[5rem]"
                   // value = {(e) => setQuery(e.target.value)}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => handleSubmitKeyboard(i, e)}
                   value={query}
                   placeholder="Type Your Message Here"
                 ></textarea>
-
-                <SendIcon
-                  type="submit"
-                  className="cursor-pointer mt-5  translate-x-10"
-                  onClick={handleSubmit}
-                ></SendIcon>
-                {/*
                 <button
                   type="submit"
                   onClick={handleSubmit}
@@ -149,7 +141,6 @@ const Home = () => {
                 >
                   Send
                 </button>
-                */}
               </div>
             </div>
           </div>
