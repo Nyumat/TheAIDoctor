@@ -9,9 +9,9 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useEffect } from "react";
 
 import dotenv from "dotenv";
-dotenv.config();
+//dotenv.config();
 
-
+// I put the firebase initialize stuff here
 
 const auth = firebase.auth();
 

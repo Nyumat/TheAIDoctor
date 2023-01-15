@@ -15,6 +15,8 @@ const STATIC_MESSAGES = [
   { id: 4, text: "You are welcome." },
 ];
 
+// I put the firebase initialize stuff here
+
 const auth = firebase.auth();
 
 const Home = () => {
@@ -24,6 +26,7 @@ const Home = () => {
   const [query, setQuery] = useState("");
 
   const [user] = useAuthState(auth);
+
 
   // if (user) {
   //   console.log(JSON.stringify(user.displayName));
@@ -37,11 +40,24 @@ const Home = () => {
   // };
 
   const handleSubmit = async (e) => {
+      
     e.preventDefault();
     setMessages([...messages, { id: 5, text: query, agent: "user" }]);
-
+    
     setQuery("");
+    console.log(query);
   };
+
+  const handleSubmitKeyboard = async (e) => {
+       if (e.keyCode == 13 && !e.shiftKey) {
+         
+       e.preventDefault();
+       setMessages([...messages, { id: 5, text: query, agent: "user" }]);
+       
+       setQuery("");
+       console.log(query);
+     }
+     };
 
   const fetchChatGPTResponse = async (query) => {
     const response = await axios.get(
@@ -92,7 +108,10 @@ const Home = () => {
               <div className="flex flex-row gap-4">
                 <textarea
                   className="textarea textarea-primary"
+                 // value = {(e) => setQuery(e.target.value)}
                   onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={handleSubmitKeyboard}
+                  value = {query}
                   placeholder="Type Your Message Here"
                 ></textarea>
                 <button
