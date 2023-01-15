@@ -75,9 +75,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (!user) {
-      navigate("/");
-    }
     // const fetchData = async () => {
     //   const response = await fetch(requests.fetchExample);
     //   const data = await response.json();

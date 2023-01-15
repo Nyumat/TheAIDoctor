@@ -48,7 +48,7 @@ const Navbar = () => {
               </Link>
             </div>
             <Link
-              to="/home"
+              to="/"
               className="text-white text-2xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
             >
               The AI Doctor
