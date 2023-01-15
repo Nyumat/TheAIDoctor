@@ -105,9 +105,6 @@ const Intro = () => {
                 ) : (
                   <button
                     onClick={async () => {
-                      alert(
-                        "-------------- DISCLAIMER -------------- \n This is an AI Chat Bot. \n\n It is not a real doctor.  \n\nRemember that it is important to consult a licensed healthcare professional for any medical concerns or questions. They will be able to provide an accurate diagnosis and treatment plan based on your individual case."
-                      );
                       navigate("/home");
                     }}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 w-64"

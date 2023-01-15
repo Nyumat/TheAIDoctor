@@ -36,11 +36,14 @@ const addTags = (event) => {
 const Settings = () => {
   return (
     <>
-      
-      <div className="  mx-10 px-10">
-        <h1 className="flex items-center text-2xl justify-center  text-center text-white">
+      <div className="  mx-10 px-10 w-1/2">
+        <h1 className="flex items-center text-2xl justify-center text-center text-white pb-4">
           To help the AI Doctor answer your questions with a better precision,
-          please let us know of any diseases you have at a time:{" "}
+          please let us know of any symptoms or health conditions you have at
+          this time:{" "}
+        </h1>
+        <h1 className="flex items-center text-lg justify-center text-center text-pallete-purple-900">
+          You can add more than one health condition.{" "}
         </h1>
       </div>
       <br></br>
@@ -51,15 +54,12 @@ const Settings = () => {
           defaultValue={[options[5], options[5]]}
           isMulti
           options={options}
-          placeholder="Press enter to add a disease"
+          placeholder="Enter your health conditions here."
           onKeyUp={(event) => addTags(event)}
           size="10rm"
-          
         />
       </Layout>
-      
-      
-     </>
+    </>
   );
 };
 
