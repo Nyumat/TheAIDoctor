@@ -7,34 +7,34 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: "user",
-  initialState: initialState,
-  reducers: {
-    setAIResponses(state, action) {
-      let newAIResponses = action.payload;
-      const oldAIResponses = state.AIResponses;
-      let newAIResponsesArray = [...oldAIResponses, newAIResponses];
-      state.AIResponses = newAIResponsesArray;
-    },
+    name: "user",
+    initialState: initialState,
+    reducers: {
+        setAIResponses(state, action){
+            let newAIResponses = action.payload;
+            const oldAIResponses = state.AIResponses;
+            let newAIResponsesArray = [...oldAIResponses, newAIResponses];
+            state.AIResponses = newAIResponsesArray;
+        },
 
-    addAIResponse(state, action) {
-      state.AIResponses.push(action.payload);
-    },
+        addAIResponse(state, action) {
+            state.AIResponses.push(action.payload);
+        },
 
-    removeAIResponses(state, action) {
-      if (state.AIResponses.length === 0) {
-        console.error("No AIResponses to delete.");
-        return;
-      } else {
-        state.AIResponses = [];
-      }
+        removeAIResponses (state, action) {
+            if (state.AIResponses.length === 0) {
+                console.error('No AIResponses to delete.');
+                return;
+            } else {
+                state.AIResponses = [];
+            }
+        }
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(addAIResponse.fulfilled, (state, action) => {
-      return { ...state, AIResponse: action.payload };
-    });
-  },
+    extraReducers: (builder) => {
+            builder.addCase(addAIResponse.fulfilled, (state, action) => {
+            return {...state, AIResponse: action.payload}
+        });
+    },
 });
 
 export default userSlice.reducer;
