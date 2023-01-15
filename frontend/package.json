@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@formkit/auto-animate": "^1.0.0-beta.5",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.2",
     "daisyui": "^2.46.1",
