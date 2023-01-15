@@ -50,10 +50,11 @@ app.get("/api/ai", async (req, res) => {
   });
 
   // console.log(response.data.choices[0].text);
-
+  console.log(response.data)
   res.status(200).json({
-    message: "AI fetched successfully",
-    res: response.data.choices[0].text,
+    status: "AI fetched successfully",
+    text: response.data.choices[0].text,
+    agent: "AI",
   });
 })
 
