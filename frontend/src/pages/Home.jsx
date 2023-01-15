@@ -8,6 +8,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { TypeAnimation } from "react-type-animation";
+import SendIcon from "../components/SendIcon";
 
 
 
@@ -136,6 +137,13 @@ const Home = () => {
                   value={query}
                   placeholder="Type Your Message Here"
                 ></textarea>
+
+                <SendIcon
+                  type="submit"
+                  className="cursor-pointer mt-5  translate-x-10"
+                  onClick={handleSubmit}
+                ></SendIcon>
+                {/*
                 <button
                   type="submit"
                   onClick={handleSubmit}
@@ -143,6 +151,7 @@ const Home = () => {
                 >
                   Send
                 </button>
+                */}
               </div>
             </div>
           </div>
