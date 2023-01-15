@@ -51,14 +51,15 @@ const Home = () => {
       old_messages.push({ id: i, text: query, agent: "user" });
       setI(i + 1);
 
-      await getDoctorResponse(query, old_messages);
+      let text = query;
       setQuery("");
+      await getDoctorResponse(text, old_messages);
     }
   };
 
   const getDoctorResponse = async (query, old_messages) => {
     if (query === "") return;
-    const response = await fetchChatGPTResponse(query);
+    //const response = await fetchChatGPTResponse(query);
     setMessages([...old_messages, { id: i, text: response, agent: "bot" }]);
     setI(i + 1);
   };
@@ -128,7 +129,7 @@ const Home = () => {
             <div className="flex flex-row gap-4 w-full">
               <div className="flex flex-row gap-4">
                 <textarea
-                  className="textarea textarea-primary resize-none w-[65rem] h-[5rem] translate-x-10"
+                  className="textarea textarea-primary resize-none w-[64rem] h-[5rem] translate-x-12"
                   // value = {(e) => setQuery(e.target.value)}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => handleSubmitKeyboard(i, e)}
@@ -138,7 +139,7 @@ const Home = () => {
 
                 <SendIcon
                   type="submit"
-                  className="cursor-pointer mt-5  translate-x-10"
+                  className="cursor-pointer mt-5  translate-x-12"
                   onClick={handleSubmit}
                 ></SendIcon>
                 {/*
