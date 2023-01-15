@@ -12,9 +12,9 @@ const Intro = () => {
       >
         Get Started
       </button>
-      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Doctor AI</h1>
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Doctor AI</h1>
       {/* 
-      <div class="absolute top-0 right-0 ...">
+      <div className="absolute top-0 right-0 ...">
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick={() => navigate("/home")}
@@ -23,22 +23,22 @@ const Intro = () => {
       </button>
       </div>
       */}
-<section class="h-screen">
-  <div class="px-6 h-full text-gray-800">
+<section className="h-screen">
+  <div className="px-6 h-full text-gray-800">
     <div
-      class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+      className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
     >
-      <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-8/12 md:w-9/12 mb-12 md:mb-0 pr-24">
+      <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-8/12 md:w-9/12 mb-12 md:mb-0 pr-24">
         <img
           src="../assets/giflogo.gif"
-          class="w-full"
+          className="w-full"
           alt="Sample image"
         />
       </div>
       
-      <div class="">
+      <div className="">
         <form>
-          <div class="flex flex-row items-center justify-center lg:justify-start">
+          <div className="flex flex-row items-center justify-center lg:justify-start">
             <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
       >
@@ -50,7 +50,7 @@ const Intro = () => {
 
             >
               {/* Google */}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" class="w-4 h-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" className="w-4 h-4">
                 {/*! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. */}
                 <path
                   fill="currentColor"
@@ -64,7 +64,7 @@ const Intro = () => {
 
           </div>
 
-          <div class="text-center lg:text-left">
+          <div className="text-center lg:text-left">
           </div>
         </form>
       </div>
