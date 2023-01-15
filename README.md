@@ -1,14 +1,24 @@
-# BeaverHacks Winter 2023
 
-### TODO
-- [x] Make text submission work when pressing Enter button.
-- [x] Style settings page (Artem will work on it).
-- [x] Make sure that user can't use the main chat if they're not logged in.
-- [x] User should not be able to resize or edit text input window.
-- [x] Make sure that the response we get from the AI Doctor is displayed in the chat box.
-- [x] Typing animations with React Type.
-- [ ] Make CSS less hacky (no absolute positioning).
-- [x] Work on overflow for the chat window (old messages disappear upwards)
-- [x] Chat input box should be fixed to bottom (not move down as new messages are entered)
-- [x] Text input and chat messages cannot collide
-- [x] Replace firebase api keys with .env files (intro and navbar)
+
+<h1 align="center" style="font-size: 3rem;">The AI Doctor</h1>
+
+<h3 align="center">Healthcare, anytime, anywhere.</h3>
+
+<p align="center">Made By: @artkolpakov @domotheawsome @Nyumat @solderq35</p>
+
+<br>
+
+### TODO (Sorted by: Highest to Lowest Need)
+- [ ] Fix Flickering on page transitions.
+- [ ] Add Settings to be considered when a user requests AI Doctor.
+- [ ] Style send chat button, settings page, and intro page.
+- [ ] Allow user to go to home page while being logged in.
+- [ ] Fix Chat bubble sizing/spacing.
+- [ ] Add Icons to the agent(s) in chat window
+- [ ] Fix Completion Prompt to always say "AI Doctor"
+
+### Stretch Goals (post-hackathon)
+- [ ] Make Tailwind CSS less hacky.
+- [ ] Allow view of ALL previous chats.
+- [ ] User-based persistence.
+- [ ] More animations for inserting, removing, and navigating through the dom.
