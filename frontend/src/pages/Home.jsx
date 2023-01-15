@@ -9,6 +9,8 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { TypeAnimation } from "react-type-animation";
 
+
+
 const STATIC_MESSAGES = [{ id: 1, text: "Hello, how are you?", agent: "bot" }];
 
 // I put the firebase initialize stuff here
@@ -98,17 +100,17 @@ const Home = () => {
       <Layout>
         <div
           id="chat-window"
-          className="flex flex-col items-center h-[30rem] justify-center gap-8 py-16 bg-gray-600 w-[64rem] rounded-2xl overflow-scroll"
+          className="flex flex-col items-center h-[30rem] justify-center gap-8 py-16 bg-white w-[64rem] rounded-2xl scrollbar-hide overflow-scroll"
         >
           <h1 className="text-pallete-purple-500 text-2xl mb-64 relative">
             Welcome to AI Doctor Chat{" "}
           </h1>
-          <div className="w-full px-8">
+          <div className="w-full px-8 ">
             {messages.map((message, index) => (
               <div className="flex flex-col" key={index}>
                 {message.agent === "user" ? (
                   <div className="chat chat-end ">
-                    <div className="chat-bubble chat-bubble-info">
+                    <div className="chat-bubble chat-bubble-info text-white">
                       {message.text}
                     </div>
                   </div>
@@ -123,11 +125,11 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="absolute translate-x-52 translate-y-72 flex flex-col justify-center items-center w-full">
-            <div className="flex flex-row gap-4 w-full">
+          <div className= "absolute translate-x-52 translate-y-72 flex flex-col justify-center items-center margin">
+            <div className=" flex flex-row gap-4 w-full">
               <div className="flex flex-row gap-4">
                 <textarea
-                  className="textarea textarea-primary resize-none w-[65rem] h-[5rem]"
+                  className="textarea textarea-primary resize-none w-[64rem] h-[5rem]"
                   // value = {(e) => setQuery(e.target.value)}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => handleSubmitKeyboard(i, e)}
@@ -137,7 +139,7 @@ const Home = () => {
                 <button
                   type="submit"
                   onClick={handleSubmit}
-                  className="btn btn-primary bg-pallete-purple-500"
+                  className="btn btn-primary  bg-pallete-purple-500"
                 >
                   Send
                 </button>

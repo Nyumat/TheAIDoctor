@@ -6,6 +6,8 @@ import Intro from "../pages/Intro";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Settings from "../pages/Settings";
 
+import "./App.css";
+
 function App() {
   const queryClient = new QueryClient();
   return (
