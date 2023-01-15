@@ -48,6 +48,16 @@ const Home = () => {
     console.log(query);
   };
 
+  const handleSubmitKeyboard = async (e) => {
+    if (e.keyCode == 13 && !e.shiftKey) {
+      e.preventDefault();
+      setMessages([...messages, { id: 5, text: query, agent: "user" }]);
+
+      setQuery("");
+      console.log(query);
+    }
+  };
+
   const fetchChatGPTResponse = async (query) => {
     const response = await axios.get(
       `${requests.fetchChatGPT}?query=${query}}`
@@ -95,7 +105,7 @@ const Home = () => {
                       <div className="chat-bubble chat-bubble-primary">
                       <TypeAnimation
 
-                      sequence =  {[message.text]}
+                      sequence =  {[message.text, 100]}
                         />
                       </div>
                     </div>

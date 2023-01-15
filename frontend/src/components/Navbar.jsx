@@ -9,6 +9,15 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
 // I put the firebase initialize stuff here
+firebase.initializeApp({
+  apiKey: "AIzaSyCIvW00xWRcOf0DD8YwIF5Ifc4qhCsqpok",
+  authDomain: "theaidoctor-b8d49.firebaseapp.com",
+  projectId: "theaidoctor-b8d49",
+  storageBucket: "theaidoctor-b8d49.appspot.com",
+  messagingSenderId: "518923797920",
+  appId: "1:518923797920:web:161812d0b122597c4f90c5",
+  measurementId: "G-TCSQ1BCEEL",
+});
 
 function SignOut() {
   const auth = firebase.auth();
