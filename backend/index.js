@@ -34,7 +34,6 @@ app.get("/api/user", (req, res) => {
   });
 });
 
-
 app.get("/api/ai", async (req, res) => {
   let query = req.query.query;
 
@@ -50,14 +49,13 @@ app.get("/api/ai", async (req, res) => {
   });
 
   // console.log(response.data.choices[0].text);
-  console.log(response.data)
+  console.log(response.data);
   res.status(200).json({
     status: "AI fetched successfully",
     text: response.data.choices[0].text,
     agent: "AI",
   });
-})
-
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`\n\n Server running on port ${process.env.PORT} \n\n`);

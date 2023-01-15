@@ -22,7 +22,16 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-            <Route path="/home" element={<Home userPhotoUrl={user ? user.photoURL : "https://picsum.photos/200"} />} />
+            <Route
+              path="/home"
+              element={
+                <Home
+                  userPhotoUrl={
+                    user ? user.photoURL : "https://picsum.photos/200"
+                  }
+                />
+              }
+            />
             <Route path="/settings" element={<Settings />} />
             <Route path="/" element={<Intro />} />
           </Routes>
