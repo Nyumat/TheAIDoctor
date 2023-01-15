@@ -58,7 +58,7 @@ const Home = ({ userPhotoUrl }) => {
 
   const fetchChatGPTResponse = async (query) => {
     const response = await axios.get(
-      `${requests.fetchChatGPT}?query=Considering I have : ${settingsData} ${query}}`
+      `${requests.fetchChatGPT}?query=${query}}`
     );
     const data = response.data;
     return data.text;
