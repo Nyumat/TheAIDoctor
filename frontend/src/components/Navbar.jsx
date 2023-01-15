@@ -8,8 +8,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
-
-
 function SignOut() {
   const auth = firebase.auth();
   const navigate = useNavigate();

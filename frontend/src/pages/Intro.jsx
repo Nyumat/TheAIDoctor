@@ -25,7 +25,6 @@ const Intro = () => {
     auth.signInWithPopup(provider);
   };
 
-
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-8">
       {/* <h1>Welcome to Our Application!</h1>*/}
