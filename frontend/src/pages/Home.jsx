@@ -52,15 +52,16 @@ const Home = () => {
       let old_messages = messages;
       old_messages.push({ id: i, text: query, agent: "user" });
       setI(i + 1);
-
-      await getDoctorResponse(query, old_messages);
+      let text = query;
       setQuery("");
+      await getDoctorResponse(text, old_messages);
     }
   };
 
   const getDoctorResponse = async (query, old_messages) => {
     if (query === "") return;
-    const response = await fetchChatGPTResponse(query);
+    // const response = await fetchChatGPTResponse(query);
+    const response = "Hello, how are you?";
     setMessages([...old_messages, { id: i, text: response, agent: "bot" }]);
     setI(i + 1);
   };
