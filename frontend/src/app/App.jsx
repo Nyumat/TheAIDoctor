@@ -4,6 +4,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Intro from "../pages/Intro";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Settings from "../pages/Settings";
 
 function App() {
   const queryClient = new QueryClient();
@@ -13,6 +14,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/home" element={<Home />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/" element={<Intro />} />
           </Routes>
         </BrowserRouter>
