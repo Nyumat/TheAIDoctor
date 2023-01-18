@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router";
-
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect } from "react";
 import medicine from "../assets/medicine.svg";
 import doctors from "../assets/doctors.svg";
 
@@ -31,30 +29,14 @@ const Intro = () => {
     await auth.signInWithPopup(provider);
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/home");
-  //   }
-  // }, [user]);
-
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="pt-16 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-        Doctor AI
+        The AI Doctor
       </h1>
       <h2 className="text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white pt-8">
-        Anytime, Anywhere.
+        Health Advice, Anytime, Anywhere.
       </h2>
-      {/* 
-      <div className="absolute top-0 right-0 ...">
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => navigate("/home")}
-      >
-        Login
-      </button>
-      </div>
-      */}
       <section className="h-screen">
         <div className="px-6 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
