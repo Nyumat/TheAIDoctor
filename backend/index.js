@@ -39,7 +39,7 @@ app.get("/api/ai", async (req, res) => {
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Human: ${query}`,
+    prompt: `${query}`,
     temperature: 0.9,
     max_tokens: 150,
     top_p: 1,
