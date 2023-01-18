@@ -11,20 +11,18 @@ import { TypeAnimation } from "react-type-animation";
 import SendIcon from "../components/SendIcon";
 import RobotDoctor from "../assets/robot_doctor.jpg";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import moment from "moment";
+import Navbar from "../components/Navbar";
 
 const auth = firebase.auth();
 
-const Home = ({ userPhotoUrl }) => {
-  const navigate = useNavigate();
-  const [resData, setResData] = useState([]);
-  const [active, setActive] = useState(false);
+const Home = ({ userPhotoUrl, conditions }) => {
   const [query, setQuery] = useState("");
-  const [user] = useAuthState(auth);
   const [i, setI] = useState(0);
-
   const [messages, setMessages] = useState([]);
-
   const [parent] = useAutoAnimate();
+  const [user] = useAuthState(auth);
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,13 +50,17 @@ const Home = ({ userPhotoUrl }) => {
   const getDoctorResponse = async (query, old_messages) => {
     if (query === "") return;
     const response = await fetchChatGPTResponse(query);
+    setIsTyping(true);
     setMessages([...old_messages, { id: i, text: response, agent: "bot" }]);
+    setTimeout(() => {
+      setIsTyping(false);
+    }, 5000);
     setI(i + 1);
   };
 
   const fetchChatGPTResponse = async (query) => {
     const response = await axios.get(
-      `${requests.fetchChatGPT}?query=${query}}`
+      `${requests.fetchChatGPT}?query=Considering I have ${conditions}, ${query}}`
     );
     const data = response.data;
     return data.text;
@@ -67,16 +69,22 @@ const Home = ({ userPhotoUrl }) => {
   useEffect(() => {
     const chatWindow = document.getElementById("chat-window");
     chatWindow.scrollTop = chatWindow.scrollHeight;
-  }, [messages]);
 
-  useEffect(() => {
-    document.getElementById("my-modal-3").checked = true;
-  }, []);
+    // We need to show the disclaimer modal only once
+    if (messages.length === 1) {
+      document.getElementById("my-modal-3").checked = true;
+    }
+
+    // We need to continously scroll to the bottom of the chat window only when the bot is typing
+    if (isTyping) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  }, [messages.length, isTyping]);
 
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen w-screen gap-4 mt-16">
           <input type="checkbox" id="my-modal-3" className="modal-toggle" />
           <div className="modal">
             <div className="modal-box relative bg-pallete-purple-200">
@@ -101,18 +109,23 @@ const Home = ({ userPhotoUrl }) => {
           </div>
           <div
             id="chat-window"
-            className="flex flex-col items-center h-[30rem] justify-center gap-8 py-16 bg-pallete-purple-100 w-[64rem] rounded-2xl scrollbar-hide overflow-scroll"
+            className="flex flex-col items-center h-[30rem] justify-center gap-8  bg-pallete-purple-100 md:w-[calc(100%-10rem)] rounded-2xl scrollbar-hide overflow-scroll sm:w-100 lg:w-[calc(100%-10rem)] mx-4"
           >
             <div className="flex flex-col items-center">
-              <h1 className="text-pallete-purple-500 text-2xl relative">
-                Welcome to AI Doctor Chat
+              <h1 className="text-pallete-purple-500 text-2xl relative text-center">
+                Welcome to the AI Doctor Chat{" "}
+                {user && user.displayName && (
+                  <span className="text-pallete-purple-700">
+                    {user.displayName}!
+                  </span>
+                )}
               </h1>
-              <h1 className="text-pallete-purple-500 text-lg mb-64 relative font-bold">
-                Start your conversation with the doctor to get your health
+              <h1 className="text-pallete-purple-500 text-lg mb-64 relative font-bold text-center mx-4">
+                Start your conversation with AI Doctor and get your health
                 advice.
               </h1>
             </div>
-            <div className="w-full px-8" ref={parent}>
+            <div className="w-full px-8" ref={parent} id="messages">
               {messages.map((message, index) => (
                 <div className="flex flex-col pt-6" key={index}>
                   {message.agent === "user" ? (
@@ -122,6 +135,12 @@ const Home = ({ userPhotoUrl }) => {
                           <div className="w-10 rounded-full">
                             <img src={userPhotoUrl} />
                           </div>
+                        </div>
+                        <div className="chat-header text-sm text-gray-500 mb-1 mx-2">
+                          {auth.currentUser.displayName}
+                          <time className="ml-2 text-sm opacity-50">
+                            {moment().format("LT")}
+                          </time>
                         </div>
                         <div className="chat-bubble bg-pallete-purple-300 text-gray-900 whitespace-normal break-normal">
                           {message.text}
@@ -136,7 +155,13 @@ const Home = ({ userPhotoUrl }) => {
                             <img src={RobotDoctor} />
                           </div>
                         </div>
-                        <div className="chat-bubble text-white bg-pallete-purple-700 whitespace-normal break-words">
+                        <div className="chat-header text-sm text-gray-500 mb-1 mx-2">
+                          AI Doctor
+                          <time className="ml-2 text-sm opacity-50">
+                            {moment().format("LT")}
+                          </time>
+                        </div>
+                        <div className="chat-bubble text-white bg-pallete-purple-700 whitespace-normal break-words w-[20rem]">
                           <TypeAnimation sequence={[message.text]} />
                         </div>
                       </div>
@@ -145,36 +170,22 @@ const Home = ({ userPhotoUrl }) => {
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="absolute translate-x-52 translate-y-72 flex flex-col justify-center items-center margin">
-              <div className=" flex flex-row gap-4 w-full">
-                <div className="flex flex-row gap-4">
-                  <textarea
-                    className="textarea textarea-primary resize-none w-[64rem] h-[5rem] bg-pallete-purple-100 rounded-2xl text-gray-900"
-                    // value = {(e) => setQuery(e.target.value)}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={(e) => handleSubmitKeyboard(i, e)}
-                    value={query}
-                    placeholder="Type Your Message Here"
-                  ></textarea>
+          <div className="flex flex-row gap-4 h-[5rem] w-screen">
+            <textarea
+              className="textarea textarea-primary resize-none bg-pallete-purple-100 ml-24 rounded-2xl text-gray-900 w-screen"
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => handleSubmitKeyboard(i, e)}
+              value={query}
+              placeholder="Type Your Message Here"
+            ></textarea>
 
-                  <SendIcon
-                    type="submit"
-                    className="cursor-pointer mt-5"
-                    onClick={handleSubmit}
-                  ></SendIcon>
-                  {/*
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  className="btn btn-primary  bg-pallete-purple-500"
-                >
-                  Send
-                </button>
-                */}
-                </div>
-              </div>
-            </div>
+            <SendIcon
+              type="submit"
+              className="cursor-pointer mt-5 mr-16"
+              onClick={handleSubmit}
+            ></SendIcon>
           </div>
         </div>
       </Layout>
