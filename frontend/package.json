@@ -15,6 +15,7 @@
     "axios": "^1.2.2",
     "daisyui": "^2.46.1",
     "firebase": "^9.15.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
