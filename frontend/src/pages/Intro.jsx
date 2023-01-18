@@ -46,7 +46,7 @@ const Intro = () => {
               alt="Sample image"
             />
 
-            <div className="absolute flex flex-col items-center justify-center w-max h-screen left-0 scale-75 pb-32 mr-64 translate-x-[-64px]">
+            <div className="absolute flex flex-col items-center justify-center w-max h-screen left-0 scale-50 pb-32 mr-64 translate-x-[-64px]">
               <img
                 src="../assets/giflogo.gif"
                 className="w-full"
@@ -56,7 +56,7 @@ const Intro = () => {
 
             <img
               src={medicine}
-              className="bottom-0 right-0 absolute w-1/2 h-1/2 scale-75 pl-32"
+              className="bottom-0 right-0 absolute w-1/2 h-3/4 scale-75 pl-32"
               alt="Sample image"
             />
 
