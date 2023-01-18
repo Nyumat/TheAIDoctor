@@ -2,6 +2,7 @@ import React from "react";
 import Select, { components } from "react-select";
 import CreatableSelect from "react-select/creatable";
 import Layout from "../components/Layout";
+import { useEffect } from "react";
 
 const options = [
   { value: "Heart Disease", label: "Heart Disease" },
@@ -33,7 +34,7 @@ const addTags = (event) => {
   }
 };
 
-const Settings = () => {
+const Settings = ({ conditions, setConditions }) => {
   return (
     <>
       <div className="  mx-10 px-10 w-1/2">
@@ -51,11 +52,12 @@ const Settings = () => {
         <CreatableSelect
           closeMenuOnSelect={false}
           components={{ IndicatorsContainer }}
-          defaultValue={[options[5], options[5]]}
+          defaultValue={conditions}
           isMulti
           options={options}
           placeholder="Enter your health conditions here."
           onKeyUp={(event) => addTags(event)}
+          onChange={(event) => setConditions(event)}
           size="10rm"
         />
       </Layout>
