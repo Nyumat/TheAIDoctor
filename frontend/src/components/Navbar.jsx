@@ -48,7 +48,7 @@ const Navbar = () => {
           >
             The AI Doctor
           </Link>
-          <div className="flex flex-row gap-4 w-full flex-wrap justify-end align-center items-center">
+          <div className="flex flex-row gap-2 w-full justify-end align-center items-center">
             <Link to="/" className="text-white font-bold">
               <SignOut className="cursor-pointer" />
             </Link>
