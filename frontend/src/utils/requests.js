@@ -1,5 +1,5 @@
 const OPEN_API_KEY = "";
-const BASE_URL = "http://localhost:8080/api";
+const BASE_URL = "https://the-ai-doctor.onrender.com/api";
 
 const request = {
   fetchExample: `${BASE_URL}/user`,
