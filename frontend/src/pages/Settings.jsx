@@ -37,7 +37,7 @@ const addTags = (event) => {
 const Settings = ({ conditions, setConditions }) => {
   return (
     <>
-      <div className="  mx-10 px-10 w-1/2">
+      <div className="  mx-10 px-10 w-3/4">
         <h1 className="flex items-center text-2xl justify-center text-center text-white pb-4">
           To help the AI Doctor answer your questions with a better precision,
           please let us know of any symptoms or health conditions you have at

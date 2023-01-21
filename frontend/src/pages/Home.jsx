@@ -54,7 +54,7 @@ const Home = ({ userPhotoUrl, conditions }) => {
     setMessages([...old_messages, { id: i, text: response, agent: "bot" }]);
     setTimeout(() => {
       setIsTyping(false);
-    }, 5000);
+    }, 8000);
     setI(i + 1);
   };
 
