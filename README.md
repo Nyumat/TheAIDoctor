@@ -9,6 +9,12 @@
 </p>
 
 <div align="center">
+<a href="https://ai-doctor.onrender.com/">Deployed to Render.com with ♡ here.</a>
+</div>
+<br>
+
+<div align="center">
+<p><b>Youtube Video</b></p>
 <a href="https://www.youtube.com/watch?v=rylIjzUoKDU" target="_blank">
  <img src="http://img.youtube.com/vi/rylIjzUoKDU/maxresdefault.jpg" alt="Watch the video" width="270" height="180"/>
 </a>
