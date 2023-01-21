@@ -84,7 +84,7 @@ const Intro = () => {
               <img
                 src="../assets/giflogo.gif"
                 className="w-full"
-                alt="Sample image"
+                alt="."
               />
             </div>
 
