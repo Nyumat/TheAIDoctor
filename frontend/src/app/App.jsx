@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import NotFound from "../pages/NotFound";
 
 const auth = firebase.auth();
 
@@ -35,6 +36,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
+            <Route path="*" element={<NotFound />} />
             <Route
               path="/home"
               element={
